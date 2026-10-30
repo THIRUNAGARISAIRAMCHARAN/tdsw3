@@ -125,7 +125,7 @@ def build_app(store=None, decider=None):
             raise ApiError(406, "NOT_ACCEPTABLE", "Supported response type: application/a2a+json")
         if has_body:
             ct = request.headers.get("content-type", "").split(";")[0].strip().lower()
-            if ct not in (A2A_MT, "application/json"):
+            if ct != A2A_MT:
                 raise ApiError(415, "UNSUPPORTED_MEDIA_TYPE", "Content-Type must be application/a2a+json")
 
     async def read_json(request):
